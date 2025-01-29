@@ -9,6 +9,7 @@ const io = new Server(httpServer);
 
 const PORT = 8776;
 
+const usernameRegex = /[^A-Za-z0-9 `.]/g;
 let users = [];
 
 app.use(express.static(path.join(__dirname, "/public")));
@@ -19,6 +20,24 @@ app.get("/", (res, req) => {
 
 io.on("connection", (socket) => {
     socket.on("add user", (username) => {
+        username = username.trim();
+
+        if (username.length > 16) {
+            return;
+        }
+        if (users.includes(username)) {
+            socket.emit("name rejected", {
+                reason: "This name is already in use. Please choose another name.",
+            });
+            return;
+        }
+        if (usernameRegex.test(username)) {
+            socket.emit("name rejected", {
+                reason: "This name contains invalid characters. Only alphanumeric characters and spaces are allowed.",
+            });
+            return;
+        }
+
         socket.data.username = username;
         users.push(username);
         socket.emit("login", {
@@ -31,14 +50,20 @@ io.on("connection", (socket) => {
     });
 
     socket.on("new message", (message) => {
+        if (message.length > 300) {
+            return;
+        }
         socket.broadcast.emit("new message", {
             username: socket.data.username,
-            message: message,
+            message: sanitize(message),
         });
     });
 
     socket.on("disconnect", () => {
         const username = socket.data.username;
+
+        if (!username) return;
+
         const index = users.indexOf(username);
         if (index !== -1) {
             users.splice(index, 1);
@@ -50,6 +75,10 @@ io.on("connection", (socket) => {
         });
     });
 });
+
+function sanitize(input) {
+    return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
 
 httpServer.listen(PORT, () => {
     console.log(`server started on port ${PORT}`);
