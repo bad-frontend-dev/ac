@@ -8,91 +8,14 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         />
-        <script
-            src="https://www.google.com/recaptcha/api.js"
-            async
-            defer
-        ></script>
         <style>
-            .blurred-background {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                backdrop-filter: blur(10px);
-                z-index: 10;
-            }
-            .popup {
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-color: #1f1f1f;
-                padding: 30px;
-                border-radius: 10px;
-                z-index: 20;
-                max-width: 450px;
-                text-align: center;
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-            }
-            .popup h2 {
-                margin-top: 0;
-                font-size: 24px;
-            }
-            .popup p {
-                font-size: 16px;
-                margin-bottom: 20px;
-                line-height: 1.5;
-            }
-            .popup .g-recaptcha {
-                margin: 20px 0;
-                display: flex;
-                justify-content: center;
-            }
-            .popup button {
-                background-color: #007bff;
-                color: #fff;
-                border: none;
-                padding: 10px 20px;
-                font-size: 16px;
-                border-radius: 5px;
-                cursor: pointer;
-                margin-top: 20px;
-            }
-            .popup button:hover {
-                background-color: #0056b3;
-            }
-            .popup button:disabled {
-                background-color: #555;
-                cursor: not-allowed;
-            }
             .theme-button i,
             .plugin-button i {
                 font-size: 20px;
             }
-            #themeWindow,
-            #pluginWindow {
-                display: none;
-            }
-            .dont-show-again {
-                margin-top: 10px;
-            }
         </style>
     </head>
     <body>
-        <div class="blurred-background"></div>
-        <div class="popup">
-            <h2>Notice</h2>
-            <p>
-                By using this chatroom, you acknowledge your responsibility for
-                anything you say. Be aware that some users might intentionally
-                make provocative or inappropriate comments for their amusement.
-            </p>
-            <input type="checkbox" id="dontShowAgain" class="dont-show-again" />
-            <label for="dontShowAgain">Don't show again</label>
-            <button id="acceptButton">Accept</button>
-        </div>
         <ul class="pages">
             <li class="chat page">
                 <div class="chatArea">
@@ -107,12 +30,7 @@
             <li class="login page">
                 <div class="form">
                     <h3 class="title">Enter a Username:</h3>
-                    <input
-                        class="usernameInput"
-                        type="text"
-                        maxlength="16"
-                        disabled
-                    />
+                    <input class="usernameInput" type="text" maxlength="16" />
                     <input
                         class="passwordInput"
                         type="password"
@@ -123,10 +41,10 @@
                 </div>
             </li>
         </ul>
-        <button id="themeButton" class="theme-button" disabled>
+        <button id="themeButton" class="theme-button">
             <i class="fas fa-paint-brush"></i>
         </button>
-        <button id="pluginButton" class="plugin-button" disabled>
+        <button id="pluginButton" class="plugin-button">
             <i class="fas fa-plug"></i>
         </button>
         <div id="themeWindow" class="theme-window">
@@ -143,38 +61,8 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-        <script
-            src="https://cdn.socket.io/4.8.1/socket.io.min.js"
-            integrity="sha384-mkQ3/7FUtcGyoppY6bz/PORYoGqOl7/aSUMn2ymDOJcapfS6PHqxhRTMh1RR0Q6+"
-            crossorigin="anonymous"
-        ></script>
+        <script src="/socket.io/socket.io.js"></script>
         <script src="js/main.js"></script>
         <script src="js/themes.js"></script>
-        <script>
-            function enableAcceptButton() {
-                document.getElementById("acceptButton").disabled = false;
-            }
-            function enableUI() {
-                document.getElementById("themeButton").disabled = false;
-                document.getElementById("pluginButton").disabled = false;
-                document.querySelector(".usernameInput").disabled = false;
-            }
-            document.addEventListener("DOMContentLoaded", function () {
-                if (localStorage.getItem("dontShowAgain")) {
-                    document.querySelector(".blurred-background").remove();
-                    document.querySelector(".popup").remove();
-                    enableUI();
-                }
-                document
-                    .getElementById("acceptButton")
-                    .addEventListener("click", function () {
-                        if (document.getElementById("dontShowAgain").checked)
-                            localStorage.setItem("dontShowAgain", "true");
-                        document.querySelector(".blurred-background").remove();
-                        document.querySelector(".popup").remove();
-                        enableUI();
-                    });
-            });
-        </script>
     </body>
 </html>
