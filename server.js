@@ -5,8 +5,8 @@ const path = require("path");
 const { readFileSync } = require("fs");
 
 const app = express();
-const httpServer = http.createServer(app);
-const io = new Server(httpServer);
+const server = http.createServer(app);
+const io = new Server(server);
 
 const PORT = 3000;
 
@@ -79,7 +79,7 @@ io.on("connection", (socket) => {
                         username: username,
                     });
                     for (const socket of await io.fetchSockets()) {
-                        if (socket.data.username == username) {
+                        if (socket.data.username === username) {
                             socket.disconnect();
                         }
                     }
@@ -98,6 +98,20 @@ io.on("connection", (socket) => {
             username: socket.data.username,
             message: sanitize(message),
         });
+
+        const currentCount = socket.data.count || 0;
+        const previousMessage = socket.data.previous;
+        const nextCount = previousMessage === message ? currentCount + 1 : 0;
+        if (nextCount >= 3) {
+            socket.disconnect();
+        }
+
+        socket.data.count = nextCount;
+        socket.data.previous = message;
+    });
+
+    socket.on("reconnect", () => {
+        socket.emit("reconnect");
     });
 
     socket.on("disconnect", () => {
@@ -117,7 +131,7 @@ io.on("connection", (socket) => {
     });
 });
 
-httpServer.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`server started on port ${PORT}`);
 });
 

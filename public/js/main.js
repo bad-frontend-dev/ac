@@ -370,25 +370,25 @@ $(function () {
 
     socket.on("disconnect", function () {
         log("you have been disconnected");
-    });
 
-    socket.on("reconnect", function () {
-        log("you have been reconnected");
-        if (username) {
-            socket.emit("add user", username);
-        }
-    });
+        let count = 0;
+        const interval = setInterval(() => {
+            if (socket.connected) {
+                clearInterval(interval);
+                log("you have been reconnected");
+                socket.emit("add user", username);
+                return;
+            }
+            if (count >= 5) {
+                clearInterval(interval);
+                log("unable to reconnect");
+                return;
+            }
 
-    socket.on("reconnect_attempt", function () {
-        log("attempting to reconnect...");
-    });
-
-    socket.on("reconnect_error", function () {
-        log("reconnect attempt has failed");
-    });
-
-    socket.on("reconnect_failed", function () {
-        log("reconnection failed");
+            count += 1;
+            socket.connect();
+            log("attempting to reconnect...");
+        }, 1000);
     });
 
     socket.on("password prompt", function (username) {
