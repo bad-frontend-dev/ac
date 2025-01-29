@@ -2,6 +2,7 @@ const express = require("express");
 const { Server } = require("socket.io");
 const http = require("http");
 const path = require("path");
+const { readFileSync } = require("fs");
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -11,6 +12,7 @@ const PORT = 3000;
 
 const usernameRegex = /[^A-Za-z0-9 `.]/g;
 let users = [];
+const admins = JSON.parse(readFileSync("./users.json"));
 
 app.use(express.static(path.join(__dirname, "/public")));
 
@@ -38,17 +40,26 @@ io.on("connection", (socket) => {
             return;
         }
 
-        socket.data.username = username;
-        socket.data.roles = [username === "cob" ? "admin" : ""];
-        //no password protection because im lazy
-        users.push(username);
-        socket.emit("login", {
-            numUsers: users.length,
-        });
-        socket.broadcast.emit("user joined", {
-            username: username,
-            numUsers: users.length,
-        });
+        if (admins[username]) {
+            socket.emit("password prompt", username);
+            return;
+        }
+
+        addUser(socket, username);
+    });
+
+    socket.on("password submit", (password, username) => {
+        const userData = admins[username];
+
+        if (!userData) return;
+        if (userData.password !== password) {
+            socket.emit("name rejected", {
+                reason: "Invalid password.",
+            });
+            return;
+        }
+        socket.data.roles = userData.roles || [];
+        addUser(socket, username);
     });
 
     socket.on("new message", async (message) => {
@@ -61,8 +72,9 @@ io.on("connection", (socket) => {
             const roles = socket.data.roles;
             switch (parsed[0]) {
                 case "/kick":
-                    if (!roles || !roles.includes("admin")) return;
                     const username = message.split("/kick ")[1];
+                    if (!roles || !roles.includes("admin")) return;
+                    if (!users.includes(username)) return;
                     socket.emit("user kicked", {
                         username: username,
                     });
@@ -105,10 +117,22 @@ io.on("connection", (socket) => {
     });
 });
 
+httpServer.listen(PORT, () => {
+    console.log(`server started on port ${PORT}`);
+});
+
 function sanitize(input) {
     return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-httpServer.listen(PORT, () => {
-    console.log(`server started on port ${PORT}`);
-});
+function addUser(socket, username) {
+    socket.data.username = username;
+    users.push(username);
+    socket.emit("login", {
+        numUsers: users.length,
+    });
+    socket.broadcast.emit("user joined", {
+        username: username,
+        numUsers: users.length,
+    });
+}
