@@ -1,414 +1,431 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-html, input {
-  font-family: 'Roboto', sans-serif;
+html,
+input {
+    font-family: "Roboto", sans-serif;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #000000;
-  color: #FFFFFF;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 ul {
-  list-style: none;
-  word-wrap: break-word;
+    list-style: none;
+    word-wrap: break-word;
 }
 
 .pages {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 .page {
-  height: 100%;
-  position: absolute;
-  width: 100%;
+    height: 100%;
+    position: absolute;
+    width: 100%;
 }
 
 .login.page {
-  background: radial-gradient(circle, #000000, #0d0d0d);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  animation: fadeIn 1s ease-out;
+    background: radial-gradient(circle, #000000, #0d0d0d);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeIn 1s ease-out;
 }
 
 .login.page .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #1a1a1a;
-  padding: 40px 50px;
-  border-radius: 20px;
-  box-shadow: 0 0 25px rgba(255, 165, 0, 0.5);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  animation: formPop 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255, 165, 0, 0.5);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: formPop 1s ease-out;
 }
 
 .login.page .form:hover {
-  box-shadow: 0 0 40px rgba(255, 165, 0, 0.75);
-  transform: translateY(-10px);
+    box-shadow: 0 0 40px rgba(255, 165, 0, 0.75);
+    transform: translateY(-10px);
 }
 
 .login.page .form .usernameInput {
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid #FFFFFF;
-  outline: none;
-  padding: 15px 0;
-  text-align: center;
-  width: 300px;
-  color: #FFFFFF;
-  transition: border-color 0.3s ease, width 0.3s ease;
-  font-size: 1.5em;
-  margin-bottom: 30px;
-  animation: inputGlow 1.5s infinite alternate;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #ffffff;
+    outline: none;
+    padding: 15px 0;
+    text-align: center;
+    width: 300px;
+    color: #ffffff;
+    transition: border-color 0.3s ease, width 0.3s ease;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    animation: inputGlow 1.5s infinite alternate;
 }
 
 .login.page .form .usernameInput:hover {
-  border-bottom: 2px solid #1E90FF;
-  width: 320px;
+    border-bottom: 2px solid #1e90ff;
+    width: 320px;
 }
 
 .login.page .title {
-  font-size: 3.5em;
-  margin-bottom: 40px;
-  color: #FFFFFF;
-  font-weight: 300;
-  text-shadow: 0 0 20px #1E90FF;
-  animation: titleGlow 2s infinite alternate;
+    font-size: 3.5em;
+    margin-bottom: 40px;
+    color: #ffffff;
+    font-weight: 300;
+    text-shadow: 0 0 20px #1e90ff;
+    animation: titleGlow 2s infinite alternate;
 }
 
 .chat.page {
-  display: none;
-  background: radial-gradient(circle, #000000, #0d0d0d);
+    display: none;
+    background: radial-gradient(circle, #000000, #0d0d0d);
 }
 
 .messages {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .inputMessage {
-  font-size: 1em;
+    font-size: 1em;
 }
 
 .log {
-  color: #FFFFFF;
-  font-size: 0.7em;
-  margin: 5px;
-  text-align: center;
+    color: #ffffff;
+    font-size: 0.7em;
+    margin: 5px;
+    text-align: center;
 }
 
 .chatArea {
-  height: 100%;
-  padding-bottom: 60px;
+    height: 100%;
+    padding-bottom: 60px;
 }
 
 .messages {
-  height: 100%;
-  margin: 0;
-  overflow-y: scroll;
-  padding: 10px 20px;
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 10px 20px;
 }
 
 .message.typing .messageBody {
-  color: #FFFFAB;
+    color: #ffffab;
 }
 
 .message .messageBody {
-  color: #FFFFFF;
+    color: #ffffff;
 }
 
 .highlight {
-  background-color: #333;
+    background-color: #333;
 }
 
 .mention {
-  color: #3b88eb;
+    color: #3b88eb;
 }
 
 .mention:hover {
-  text-decoration: underline;
-  cursor: pointer;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .typing {
-  color: #bbb;
+    color: #bbb;
 }
 
 .username {
-  font-weight: 700;
-  overflow: hidden;
-  padding-right: 15px;
-  text-align: right;
+    font-weight: 700;
+    overflow: hidden;
+    padding-right: 15px;
+    text-align: right;
 }
 
 .inputMessage {
-  border: 10px solid #000000;
-  background-color: #36393F;
-  color: #FFFFFF;
-  bottom: 0;
-  height: 60px;
-  left: 0;
-  outline: none;
-  padding-left: 10px;
-  position: absolute;
-  right: 0;
-  width: 100%;
-  transition: background-color 0.3s ease;
+    border: 10px solid #000000;
+    background-color: #36393f;
+    color: #ffffff;
+    bottom: 0;
+    height: 60px;
+    left: 0;
+    outline: none;
+    padding-left: 10px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 .inputMessage:hover {
-  background-color: #2C2F33;
+    background-color: #2c2f33;
 }
 
 blink {
-  animation: blink-animation 1s steps(5, start) infinite;
+    animation: blink-animation 1s steps(5, start) infinite;
 }
 
 marquee {
-  color: #FFFFFF !important;
+    color: #ffffff !important;
 }
 
 @keyframes blink-animation {
-  to {
-    visibility: hidden;
-  }
+    to {
+        visibility: hidden;
+    }
 }
 
 .message.highlight {
-  background-color: rgba(255, 165, 0, 0.25);
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px 0;
-  box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+    background-color: rgba(255, 165, 0, 0.25);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
 }
 
 .message:hover {
-  background-color: rgba(255, 165, 0, 0.15);
-  box-shadow: 0 0 25px rgba(255, 165, 0, 0.75);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(255, 165, 0, 0.15);
+    box-shadow: 0 0 25px rgba(255, 165, 0, 0.75);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes formPop {
-  0% {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes inputGlow {
-  from {
-    box-shadow: 0 0 10px rgba(30, 144, 255, 0.5);
-  }
-  to {
-    box-shadow: 0 0 20px rgba(30, 144, 255, 1);
-  }
+    from {
+        box-shadow: 0 0 10px rgba(30, 144, 255, 0.5);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(30, 144, 255, 1);
+    }
 }
 
 @keyframes titleGlow {
-  from {
-    text-shadow: 0 0 10px #1E90FF, 0 0 20px #1E90FF, 0 0 30px #1E90FF, 0 0 40px #1E90FF;
-  }
-  to {
-    text-shadow: 0 0 20px #1E90FF, 0 0 30px #1E90FF, 0 0 40px #1E90FF, 0 0 50px #1E90FF;
-  }
+    from {
+        text-shadow: 0 0 10px #1e90ff, 0 0 20px #1e90ff, 0 0 30px #1e90ff,
+            0 0 40px #1e90ff;
+    }
+    to {
+        text-shadow: 0 0 20px #1e90ff, 0 0 30px #1e90ff, 0 0 40px #1e90ff,
+            0 0 50px #1e90ff;
+    }
 }
 
 .icon {
-  width: 35px;
-  height: 35px;
-  vertical-align: middle;
-  margin-right: 5px;
-  position: relative;
-  top: -1.5px;
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    margin-right: 5px;
+    position: relative;
+    top: -1.5px;
 }
 
 a {
-  text-decoration: underline;
-  color: #ADD8E6;
+    text-decoration: underline;
+    color: #add8e6;
 }
 
 .context-menu {
-  background-color: #2f3136;
-  border: 1px solid #202225;
-  border-radius: 4px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 10px;
-  position: absolute;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
+    background-color: #2f3136;
+    border: 1px solid #202225;
+    border-radius: 4px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    position: absolute;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu-item {
-  color: #b9bbbe;
-  font-size: 14px;
-  padding: 5px 10px;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
+    color: #b9bbbe;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
 }
 
 .menu-item:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .menu-item:hover {
-  background-color: #40444b;
-  color: #ffffff;
+    background-color: #40444b;
+    color: #ffffff;
 }
 
 .menu-item .icon {
-  margin-right: 8px;
+    margin-right: 8px;
 }
 
 .context-menu .menu-item:not(:last-child) {
-  border-bottom: 1px solid #202225;
+    border-bottom: 1px solid #202225;
 }
 
 .autoscroll {
-  overflow-y: scroll;
+    overflow-y: scroll;
 }
 
-.theme-window, .plugin-window {
-  display: none;
-  position: fixed;
-  top: 10%;
-  left: 10%;
-  width: 80%;
-  height: 80%;
-  background: #1e1e1e;
-  border: 1px solid #333;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  padding: 20px;
-  z-index: 1000;
-  overflow-y: auto;
-  color: #e0e0e0;
+.theme-button i,
+.plugin-button i {
+    font-size: 20px;
 }
 
-.theme-window h2, .plugin-window h2 {
-  margin-top: 0;
-  color: #e0e0e0;
+.theme-window,
+.plugin-window {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+    color: #e0e0e0;
 }
 
-.theme-button, .plugin-button {
-  position: absolute;
-  top: 10px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  padding: 8px;
-  cursor: pointer;
-  z-index: 1001;
-  transition: transform 0.2s ease;
+.theme-window h2,
+.plugin-window h2 {
+    margin-top: 0;
+    color: #e0e0e0;
+}
+
+.theme-button,
+.plugin-button {
+    position: absolute;
+    top: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.2s ease;
 }
 
 .theme-window .install-button {
-  background-color: #007BFF;
-  color: white;
+    background-color: #007bff;
+    color: white;
 }
 
 .theme-window .installed-button {
-  background-color: grey;
-  color: white;
-  cursor: not-allowed;
+    background-color: grey;
+    color: white;
+    cursor: not-allowed;
 }
 
 .theme-window .remove-button {
-  background-color: #FF0000;
-  color: white;
+    background-color: #ff0000;
+    color: white;
 }
 
 .theme-button {
-  right: 50px;
+    right: 50px;
 }
 
 .plugin-button {
-  right: 10px;
+    right: 10px;
 }
 
-.theme-button.active, .plugin-button.active {
-  transform: scale(1.1);
+.theme-button.active,
+.plugin-button.active {
+    transform: scale(1.1);
 }
 
-#themeList li, #pluginList li {
-  padding: 10px;
-  border-bottom: 1px solid #333;
+#themeList li,
+#pluginList li {
+    padding: 10px;
+    border-bottom: 1px solid #333;
 }
 
-#themeList li:last-child, #pluginList li:last-child {
-  border-bottom: none;
+#themeList li:last-child,
+#pluginList li:last-child {
+    border-bottom: none;
 }
 
-#themeList button, #pluginList button {
-  margin-top: 5px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
+#themeList button,
+#pluginList button {
+    margin-top: 5px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
 
-#themeList button.installed-button, #pluginList button.installed-button {
-  background: #6c757d;
-  cursor: default;
+#themeList button.installed-button,
+#pluginList button.installed-button {
+    background: #6c757d;
+    cursor: default;
 }
 
 .refresh-message {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: #f8f8f2;
-  font-size: 12px;
-  background-color: #44475a;
-  padding: 5px;
-  border-radius: 3px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #f8f8f2;
+    font-size: 12px;
+    background-color: #44475a;
+    padding: 5px;
+    border-radius: 3px;
 }
 
 .refresh-message a {
-  color: #8be9fd;
-  text-decoration: underline;
+    color: #8be9fd;
+    text-decoration: underline;
 }
 
 .refresh-message a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 code {
-  background-color: #2f3136;
-  border-radius: 4px;
-  color: #dcdcdc;
-  padding: 2px 4px;
-  font-size: 0.9em;
+    background-color: #2f3136;
+    border-radius: 4px;
+    color: #dcdcdc;
+    padding: 2px 4px;
+    font-size: 0.9em;
 }
 
 .money {
-  color: #FFD700;
-  font-weight: bold;
+    color: #ffd700;
+    font-weight: bold;
 }
