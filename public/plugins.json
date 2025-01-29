@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    {
+      "name": "Memberlist",
+      "description": "Adds a draggable & collapsible memberlist to the chatroom",
+      "file": "memberlist.js",
+      "author": "fierce"
+    },
+    {
+      "name": "Bingo",
+      "description": "bingo for chatroom antics",
+      "file": "bingo.js",
+      "author": "fierce"
+    }
+  ]
+}

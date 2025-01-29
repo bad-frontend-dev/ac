@@ -1,0 +1,304 @@
+html, input {
+  font-family: 'Cascadia Code', monospace;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  word-wrap: break-word;
+}
+
+.pages {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.page {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.login.page {
+  background: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeIn 1s ease-out;
+}
+
+.login.page .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1e1e1e;
+  padding: 40px 50px;
+  border-radius: 6px;
+  box-shadow: 0 0 25px rgba(100, 149, 237, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  animation: formPop 1s ease-out;
+}
+
+.login.page .form:hover {
+  box-shadow: 0 0 40px rgba(100, 149, 237, 0.2);
+  transform: translateY(-5px);
+}
+
+.login.page .form .usernameInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #007acc;
+  outline: none;
+  padding: 15px 0;
+  text-align: center;
+  width: 300px;
+  color: #d4d4d4;
+  transition: border-color 0.3s ease, width 0.3s ease;
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+
+.login.page .form .usernameInput:hover {
+  border-bottom: 2px solid #005a9e;
+  width: 320px;
+}
+
+.login.page .title {
+  font-size: 2.5em;
+  margin-bottom: 40px;
+  color: #d4d4d4;
+  font-weight: 400;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat.page {
+  display: none;
+  background: #1e1e1e;
+}
+
+.messages {
+  font-size: 1.2em;
+}
+
+.inputMessage {
+  font-size: 1.2em;
+}
+
+.log {
+  color: #d4d4d4;
+  font-size: 0.9em;
+  margin: 5px;
+  text-align: center;
+}
+
+.chatArea {
+  height: 100%;
+  padding-bottom: 60px;
+}
+
+.messages {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  padding: 10px 20px;
+}
+
+.message.typing .messageBody {
+  color: #FFFFAB;
+}
+
+.message .messageBody {
+  color: #d4d4d4;
+}
+
+.username {
+  font-weight: 700;
+  overflow: hidden;
+  padding-right: 15px;
+  text-align: right;
+}
+
+.inputMessage {
+  border: none;
+  background-color: #252526;
+  color: #d4d4d4;
+  bottom: 0;
+  height: 60px;
+  left: 0;
+  outline: none;
+  padding-left: 10px;
+  position: absolute;
+  right: 0;
+  width: calc(100% - 20px);
+  transition: background-color 0.3s ease;
+}
+
+.inputMessage:hover {
+  background-color: #373737;
+}
+
+.message.highlight {
+  background-color: rgba(97, 175, 239, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: 0 0 20px #61afef;
+}
+
+.message.highlight:hover {
+  background-color: rgba(97, 175, 239, 0.1);
+  box-shadow: 0 0 25px rgba(97, 175, 239, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message:hover {
+  background-color: rgba(97, 175, 239, 0.05);
+  box-shadow: 0 0 20px rgba(97, 175, 239, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: #61afef;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.theme-button, .plugin-button {
+  background-color: #007acc;
+  color: #d4d4d4;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-button:hover, .plugin-button:hover {
+  background-color: #005a9e;
+  transform: scale(1.05);
+}
+
+.plugin-button {
+  background-color: #007acc;
+  color: #d4d4d4;
+}
+
+.plugin-button:hover {
+  background-color: #005a9e;
+}
+
+.theme-button.active {
+  transform: scale(1.1);
+}
+
+.plugin-button.active {
+  transform: scale(1.1);
+}
+
+.theme-button {
+  right: 70px;
+}
+
+.plugin-button {
+  right: 10px;
+}
+
+
+.theme-window, .plugin-window {
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+  color: #e0e0e0;
+}
+
+.theme-window h2, .plugin-window h2 {
+  margin-top: 0;
+  color: #007acc;
+}
+
+.theme-window li {
+  background-color: #252526;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.theme-window button, .plugin-window button {
+  background-color: #007acc;
+  color: #d4d4d4;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-window .install-button {
+  background-color: #007acc;
+}
+
+.theme-window .remove-button {
+  background-color: #FF6347;
+}
+
+.theme-window .custom-theme-button {
+  background-color: #32CD32;
+}
+
+.theme-window .clear-custom-theme-button {
+  background-color: #dc3545;
+}
+
+.theme-window button:hover, .plugin-window button:hover {
+  background-color: #005a9e;
+  transform: translateY(-2px);
+}
+
+#themeList li, #pluginList li {
+  padding: 10px;
+  border-bottom: 1px solid #333;
+}
+
+#themeList li:last-child, #pluginList li:last-child {
+  border-bottom: none;
+}
+
+#themeList button, #pluginList button {
+  margin-top: 5px;
+  background: #007acc;
+  color: #d4d4d4;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#themeList button.installed-button, #pluginList button.installed-button {
+  background: #6c757d;
+  cursor: default;
+}

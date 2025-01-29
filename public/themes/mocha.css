@@ -1,0 +1,323 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html, input {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+  }
+  
+  ul {
+    list-style: none;
+    word-wrap: break-word;
+  }
+  
+  .pages {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .page {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .login.page {
+    background: radial-gradient(circle, #1e1e2e, #181825);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .login.page .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #313244;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(108, 112, 134, 0.5);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: formPop 1s ease-out;
+  }
+  
+  .login.page .form:hover {
+    box-shadow: 0 0 40px rgba(108, 112, 134, 0.75);
+    transform: translateY(-10px);
+  }
+  
+  .login.page .form .usernameInput {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #a6adc8;
+    outline: none;
+    padding: 15px 0;
+    text-align: center;
+    width: 300px;
+    color: #cdd6f4;
+    transition: border-color 0.3s ease, width 0.3s ease;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    animation: inputGlow 1.5s infinite alternate;
+  }
+  
+  .login.page .form .usernameInput:hover {
+    border-bottom: 2px solid #bac2de;
+    width: 320px;
+  }
+  
+  .login.page .title {
+    font-size: 3.5em;
+    margin-bottom: 40px;
+    color: #cdd6f4;
+    font-weight: 300;
+    text-shadow: 0 0 20px #89b4fa;
+    animation: titleGlow 2s infinite alternate;
+  }
+  
+  .chat.page {
+    display: none;
+    background: radial-gradient(circle, #1e1e2e, #181825);
+  }
+  
+  .messages {
+    color: #cdd6f4;
+    font-size: 1.5em;
+  }
+  
+  .inputMessage {
+    border: 10px solid #1e1e2e;
+    background-color: #313244;
+    color: #cdd6f4;
+    bottom: 0;
+    height: 60px;
+    left: 0;
+    outline: none;
+    padding-left: 10px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .inputMessage:hover {
+    background-color: #45475a;
+  }
+  
+  .log {
+    color: #cdd6f4;
+    font-size: 0.7em;
+    margin: 5px;
+    text-align: center;
+  }
+  
+  .chatArea {
+    height: 100%;
+    padding-bottom: 60px;
+  }
+  
+  .messages {
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 10px 20px;
+  }
+  
+  .message.typing .messageBody {
+    color: #ffffab;
+  }
+  
+  .message .messageBody {
+    color: #cdd6f4;
+  }
+  
+  .username {
+    font-weight: 700;
+    overflow: hidden;
+    padding-right: 15px;
+    text-align: right;
+  }
+  
+  .message.highlight {
+    background-color: rgba(137, 180, 250, 0.25);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 0 20px rgba(137, 180, 250, 0.5);
+  }
+  
+  .message:hover {
+    background-color: rgba(137, 180, 250, 0.15);
+    box-shadow: 0 0 25px rgba(137, 180, 250, 0.75);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+  }
+  
+  marquee {
+    color: #cdd6f4 !important;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes formPop {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes inputGlow {
+    from {
+      box-shadow: 0 0 10px rgba(108, 112, 134, 0.5);
+    }
+    to {
+      box-shadow: 0 0 20px rgba(108, 112, 134, 1);
+    }
+  }
+  
+  @keyframes titleGlow {
+    from {
+      text-shadow: 0 0 10px #89b4fa, 0 0 20px #89b4fa, 0 0 30px #89b4fa, 0 0 40px #89b4fa;
+    }
+    to {
+      text-shadow: 0 0 20px #89b4fa, 0 0 30px #89b4fa, 0 0 40px #89b4fa, 0 0 50px #89b4fa;
+    }
+  }
+  
+  .admin-icon {
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    margin-right: 5px;
+    position: relative;
+    top: -1.5px;
+  }
+  
+  a {
+    text-decoration: underline;
+    color: #eba0ac;
+    transition: all 0.3s ease;
+  }
+  
+  a:hover {
+    text-shadow: 0 0 5px #eba0ac, 0 0 10px #eba0ac, 0 0 20px #eba0ac, 0 0 40px #eba0ac, 0 0 80px #eba0ac;
+  }
+  
+  .theme-window, .plugin-window {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: #1e1e2e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+    color: #cdd6f4;
+  }
+  
+  .theme-window h2, .plugin-window h2 {
+    margin-top: 0;
+    color: #cdd6f4;
+  }
+  
+  .theme-button, .plugin-button {
+    position: absolute;
+    top: 10px;
+    background: #f5c2e7;
+    color: #313244;
+    border: none;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.2s ease;
+    font-size: 18px;
+  }
+  
+  .theme-button {
+    right: 50px;
+  }
+  
+  .plugin-button {
+    right: 10px;
+  }
+  
+  .theme-button.active, .plugin-button.active {
+    transform: scale(1.1);
+  }
+  
+  #themeList li, #pluginList li {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+  }
+  
+  #themeList li:last-child, #pluginList li:last-child {
+    border-bottom: none;
+  }
+  
+  #themeList button, #pluginList button {
+    margin-top: 5px;
+    background: #f5c2e7;
+    color: #313244;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  #themeList button.installed-button, #pluginList button.installed-button {
+    background: #858585;
+    cursor: default;
+  }
+  
+  .refresh-message {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #f8f8f2;
+    font-size: 12px;
+    background-color: #44475a;
+    padding: 5px;
+    border-radius: 3px;
+  }
+  
+  .refresh-message a {
+    color: #8be9fd;
+    text-decoration: underline;
+  }
+  
+  .refresh-message a:hover {
+    text-decoration: none;
+  }
+  

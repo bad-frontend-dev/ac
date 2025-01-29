@@ -1,0 +1,360 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html, input {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #222222;
+    color: #CCCCCC;
+  }
+  
+  ul {
+    list-style: none;
+    word-wrap: break-word;
+  }
+  
+  .pages {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .page {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .login.page {
+    background: radial-gradient(circle, #222222, #444444);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .login.page .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #444444;
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(100, 100, 100, 0.5);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .login.page .form:hover {
+    box-shadow: 0 0 40px rgba(100, 100, 100, 0.75);
+    transform: translateY(-10px);
+  }
+  
+  .login.page .form .usernameInput {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #CCCCCC;
+    outline: none;
+    padding: 15px 0;
+    text-align: center;
+    width: 300px;
+    color: #CCCCCC;
+    transition: border-color 0.3s ease, width 0.3s ease;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+  
+  .login.page .form .usernameInput:hover {
+    border-bottom: 2px solid #CCCCCC;
+    width: 320px;
+  }
+  
+  .login.page .title {
+    font-size: 3.5em;
+    margin-bottom: 40px;
+    color: #CCCCCC;
+    font-weight: 300;
+    text-shadow: 0 0 20px #CCCCCC;
+  }
+  
+  .chat.page {
+    display: none;
+    background: radial-gradient(circle, #222222, #444444);
+  }
+  
+  .messages {
+    font-size: 1.5em;
+  }
+  
+  .inputMessage {
+    font-size: 1em;
+  }
+  
+  .log {
+    color: #CCCCCC;
+    font-size: 0.7em;
+    margin: 5px;
+    text-align: center;
+  }
+  
+  .chatArea {
+    height: 100%;
+    padding-bottom: 60px;
+  }
+  
+  .messages {
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 10px 20px;
+  }
+  
+  .message.typing .messageBody {
+    color: #CCCCCC;
+  }
+  
+  .message .messageBody {
+    color: #CCCCCC;
+  }
+  
+  .username {
+    font-weight: 700;
+    overflow: hidden;
+    padding-right: 15px;
+    text-align: right;
+  }
+  
+  .inputMessage {
+    border: 10px solid #222222;
+    background-color: #444444;
+    color: #CCCCCC;
+    bottom: 0;
+    height: 60px;
+    left: 0;
+    outline: none;
+    padding-left: 10px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .inputMessage:hover {
+    background-color: #555555;
+  }
+  
+  blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+  }
+  
+  marquee {
+    color: #CCCCCC !important;
+  }
+  
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  
+  .message.highlight {
+    background-color: rgba(100, 100, 100, 0.25);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 0 20px rgba(100, 100, 100, 0.5);
+  }
+  
+  .message:hover {
+    background-color: rgba(100, 100, 100, 0.15);
+    box-shadow: 0 0 25px rgba(100, 100, 100, 0.75);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes formPop {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes inputGlow {
+    from {
+      box-shadow: 0 0 10px rgba(100, 100, 100, 0.5);
+    }
+    to {
+      box-shadow: 0 0 20px rgba(100, 100, 100, 1);
+    }
+  }
+  
+  @keyframes titleGlow {
+    from {
+      text-shadow: 0 0 10px #CCCCCC, 0 0 20px #CCCCCC, 0 0 30px #CCCCCC, 0 0 40px #CCCCCC;
+    }
+    to {
+      text-shadow: 0 0 20px #CCCCCC, 0 0 30px #CCCCCC, 0 0 40px #CCCCCC, 0 0 50px #CCCCCC;
+    }
+  }
+  
+  .admin-icon {
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+    margin-right: 5px;
+    position: relative;
+    top: -1.5px;
+  }
+  
+  a {
+    text-decoration: underline;
+    color: #999999;
+    transition: all 0.3s ease;
+  }
+  
+  a:hover {
+    text-shadow: 0 0 5px #999999, 0 0 10px #999999, 0 0 20px #999999, 0 0 40px #999999, 0 0 80px #999999;
+  }
+  
+  @keyframes voidEffect {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes rainbowEffect {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .theme-window {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    width: 300px;
+    height: 400px;
+    background-color: #333333;
+    color: #CCCCCC;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+  }
+  
+  .theme-window h2 {
+    margin-top: 0;
+  }
+  
+  .theme-window ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .theme-window li {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #444444;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .theme-window .theme-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .theme-window .theme-item-header div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .theme-window .theme-item-header .theme-name {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .theme-window .theme-item-header .theme-author {
+    font-size: 0.9em;
+    color: #CCCCCC;
+    font-weight: bold;
+  }
+  
+  .theme-window .theme-description {
+    font-size: 0.9em;
+    color: #999999;
+    margin-top: 5px;
+  }
+  
+  .theme-window button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100px;
+    text-align: center;
+  }
+  
+  .theme-window .install-button {
+    background-color: #555555;
+    color: #CCCCCC;
+  }
+  
+  .theme-window .installed-button {
+    background-color: #666666;
+    color: #999999;
+    cursor: not-allowed;
+  }
+  
+  .theme-window .remove-button {
+    background-color: #777777;
+    color: #CCCCCC;
+  }
+  
+  .theme-window .custom-theme-button {
+    background-color: #555555;
+    color: #CCCCCC;
+    margin-right: 10px;
+    width: 100px;
+  }
+  
+  .theme-window .clear-custom-theme-button {
+    background-color: #777777;
+    color: #CCCCCC;
+    width: 100px;
+  }

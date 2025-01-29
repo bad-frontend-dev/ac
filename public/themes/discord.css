@@ -1,0 +1,125 @@
+@font-face {
+  font-family: 'GG Sans';
+  src: url('ggnormal.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, input {
+  font-family: 'GG Sans';
+}
+
+
+
+
+html, body {
+  background-color: #2c2f33;
+}
+
+.login.page {
+  background: radial-gradient(circle, #23272a, #2c2f33);
+}
+
+.login.page .form {
+  background-color: #36393f;
+  box-shadow: 0 0 25px rgba(114, 137, 218, 0.5);
+}
+
+.login.page .form:hover {
+  box-shadow: 0 0 40px rgba(114, 137, 218, 0.75);
+}
+
+.login.page .form .usernameInput {
+  animation: inputGlow 1.5s infinite alternate;
+}
+
+.login.page .form .usernameInput:hover {
+  border-bottom: 2px solid #7289da;
+}
+
+.login.page .title {
+  text-shadow: 0 0 20px #7289da;
+  animation: titleGlow 2s infinite alternate;
+}
+
+.chat.page {
+  background: radial-gradient(circle, #23272a, #2c2f33);
+}
+
+.inputMessage {
+  border: 10px solid #2c2f33;
+  background-color: #36393f;
+}
+
+.inputMessage:hover {
+  background-color: #23272a;
+}
+
+.message.highlight {
+  background-color: rgba(114, 137, 218, 0.25);
+  box-shadow: 0 0 20px rgba(114, 137, 218, 0.5);
+}
+
+.message:hover {
+  background-color: rgba(114, 137, 218, 0.15);
+  box-shadow: 0 0 25px rgba(114, 137, 218, 0.75);
+}
+
+@keyframes inputGlow {
+  from {
+    box-shadow: 0 0 10px rgba(114, 137, 218, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(114, 137, 218, 1);
+  }
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 10px #7289da, 0 0 20px #7289da, 0 0 30px #7289da, 0 0 40px #7289da;
+  }
+  to {
+    text-shadow: 0 0 20px #7289da, 0 0 30px #7289da, 0 0 40px #7289da, 0 0 50px #7289da;
+  }
+}
+
+/* Theme Window */
+.theme-button {
+  background-color: #7289da;
+}
+
+.theme-window {
+  background-color: #2c2f33;
+}
+
+.theme-window h2 {
+  color: #7289da;
+}
+
+.theme-window li {
+  background-color: #36393f;
+}
+
+.theme-window button {
+  background-color: #7289da;
+}
+
+.theme-window .install-button {
+  background-color: #7289da;
+}
+
+.theme-window .remove-button {
+  background-color: #ff6347;
+}
+
+.theme-window .custom-theme-button {
+  background-color: #32cd32;
+}
+
+.theme-window .clear-custom-theme-button {
+  background-color: #dc3545;
+}
+
+.theme-window button:hover {
+  background-color: #5e548e;
+}

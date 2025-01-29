@@ -1,0 +1,46 @@
+{
+    "themes": [
+        {
+            "name": "Astolfo",
+            "author": "byte",
+            "description": "A vibrant theme inspired by Astolfo.",
+            "file": "whatswrongwithme.css",
+            "urlparam": "astolfo"
+        },
+        {
+            "name": "Catppuccin Mocha",
+            "author": "fierce",
+            "description": "A cozy theme based off Catppuccin Mocha.",
+            "file": "mocha.css",
+            "urlparam": "catppuccinmocha"
+        },
+        {
+            "name": "Cozy Café",
+            "author": "byte & fierce",
+            "description": "A warm and inviting cafe-themed design. Based on example theme.",
+            "file": "cozycafe.css",
+            "urlparam": "cozycafe"
+        },
+        {
+            "name": "Discord",
+            "author": "fierce",
+            "description": "makes it look like discord",
+            "file": "discord.css",
+            "urlparam": "discord"
+        },
+        {
+            "name": "Grayscale",
+            "author": "fierce",
+            "description": "A simple grayscale theme with classic styling.",
+            "file": "grayscale.css",
+            "urlparam": "grayscale"
+        },
+        {
+            "name": "VS Code",
+            "author": "fierce",
+            "description": "Visual Studio Code like theme.",
+            "file": "codeditor.css",
+            "urlparam": "vscode"
+        }
+    ]
+}

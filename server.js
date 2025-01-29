@@ -7,7 +7,7 @@ const app = express();
 const httpServer = http.createServer(app);
 const io = new Server(httpServer);
 
-const PORT = 8776;
+const PORT = 3000;
 
 const usernameRegex = /[^A-Za-z0-9 `.]/g;
 let users = [];
@@ -39,6 +39,8 @@ io.on("connection", (socket) => {
         }
 
         socket.data.username = username;
+        socket.data.roles = [username === "cob" ? "admin" : ""];
+        //no password protection because im lazy
         users.push(username);
         socket.emit("login", {
             numUsers: users.length,
@@ -49,9 +51,36 @@ io.on("connection", (socket) => {
         });
     });
 
-    socket.on("new message", (message) => {
+    socket.on("new message", async (message) => {
         if (message.length > 300) {
             return;
+        }
+        if (message[0] === "/") {
+            //todo make better command parser
+            parsed = message.split(" ");
+            const roles = socket.data.roles;
+            switch (parsed[0]) {
+                case "/kick":
+                    if (!roles || !roles.includes("admin")) return;
+                    const username = message.split("/kick ")[1];
+                    socket.emit("user kicked", {
+                        username: username,
+                    });
+                    for (const socket of await io.fetchSockets()) {
+                        if (socket.data.username == username) {
+                            socket.disconnect();
+                        }
+                    }
+                    return;
+                case "/list":
+                    socket.emit("new message", {
+                        username: "system",
+                        message: `Currently online users: ${users.join(", ")}`,
+                    });
+                    return;
+                default:
+                    return;
+            }
         }
         socket.broadcast.emit("new message", {
             username: socket.data.username,
